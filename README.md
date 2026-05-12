@@ -41,7 +41,7 @@ python -m venv venv
 ## Usage
 To send phishing emails, go to the main page.To mimic user activity, click on the links in the emails.
 Examine user interaction reports in the report area.
-=======
+
 # phishing-awareness-simulation
 Phishing awareness training simulation system built using Flask and SQLite to track user interactions and improve cybersecurity awareness.
 

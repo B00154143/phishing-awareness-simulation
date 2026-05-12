@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Phishing Simulation Tool Using Flask
 
 A Flask-based web application that simulates phishing email campaigns and tracks user interactions. This tool is designed for educational purposes to help organizations understand the risks associated with phishing attacks.
@@ -40,3 +41,7 @@ python -m venv venv
 ## Usage
 To send phishing emails, go to the main page.To mimic user activity, click on the links in the emails.
 Examine user interaction reports in the report area.
+=======
+# phishing-awareness-simulation
+Phishing awareness training simulation system built using Flask and SQLite to track user interactions and improve cybersecurity awareness.
+>>>>>>> 2a6b734228a14e9afad81511dca4a1ba189477fe

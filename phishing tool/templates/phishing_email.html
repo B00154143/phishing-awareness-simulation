@@ -1,0 +1,16 @@
+<!-- templates/phishing_email.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Email</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Important Security Notice</h1>
+    <p>Your account requires immediate attention. Please click the link below:</p>
+    <a href="{{ link }}" class="button">Verify Your Account</a>
+</body>
+</html>

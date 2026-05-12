@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simulation Phishing Tool </title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<div class="header">
+    <img src="{{ url_for('static', filename='fish.gif.gif') }}">
+    <span>Simulation Tool</span>
+</div>
+
+<div class="container">
+
+    <!-- EMAIL FORM -->
+    <div class="card">
+        <h3>Send Awareness Simulation</h3>
+
+        <form id="emailForm" class="form">
+            <input 
+                type="email" 
+                id="email" 
+                placeholder="Enter user email address" 
+                required
+            >
+
+            <button type="submit">Send Simulation</button>
+        </form>
+
+        <div id="loading">Sending simulation...</div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+
+        <div class="card">
+            <h1>{{ interactions|length }}</h1>
+            <p>Total Events</p>
+        </div>
+
+        <div class="card">
+            <h1>{{ interactions|selectattr("clicked_link")|list|length }}</h1>
+            <p>Phishing Link Clicks</p>
+        </div>
+
+        <div class="card">
+            <h1>
+                {% if interactions|length > 0 %}
+                    {{ ((interactions|selectattr("clicked_link")|list|length / interactions|length) * 100) | round(1) }}
+                {% else %}
+                    0
+                {% endif %}%
+            </h1>
+            <p>Click Rate</p>
+        </div>
+
+    </div>
+
+    <!-- INSIGHT -->
+    <div class="card">
+        <p>
+            Users who engaged with simulated phishing emails may need additional security awareness training.
+        </p>
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-container">
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Time</th>
+            </tr>
+
+            {% for i in interactions %}
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.email }}</td>
+                <td>
+                    {% if i.clicked_link %}
+                        <span class="clicked">PHISHING LINK CLICKED</span>
+                    {% else %}
+                        <span class="safe">NO INTERACTION</span>
+                    {% endif %}
+                </td>
+                <td>{{ i.timestamp }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+
+    <div class="footer">
+        Phishing Simulation Tool for Cybersecurity Awareness • Using Flask • For learning purpose only
+    </div>
+
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast"></div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

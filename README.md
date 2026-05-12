@@ -1,25 +1,22 @@
-# Phishing Simulation Tool
+# Phishing Simulation Tool Using Flask
 
 A Flask-based web application that simulates phishing email campaigns and tracks user interactions. This tool is designed for educational purposes to help organizations understand the risks associated with phishing attacks.
 
-## Features
+## Functionality 
 
-- Send phishing emails to test user awareness.
-- Track whether users clicked on the phishing links.
-- Generate reports of user interactions.
-- Modern, responsive interface built with Bootstrap.
-
+It sends phishing emails to the user to test the awareness.
+It tracks when usrs click on the phishing link.
+It was built with Bootstrap for a responsive usr interface.
 ## Technologies Used
 
-- **Flask**: A lightweight WSGI web application framework.
-- **Flask-SQLAlchemy**: An extension that adds SQLAlchemy support to Flask applications.
-- **Bootstrap**: A front-end framework for developing responsive websites.
-- **SQLite**: A lightweight database for storing user interaction data.
+A lightweight framework for WSGI web applications is called Flask.The Flask-SQLAlchemy extension gives Flask apps support for SQLAlchemy.
+A front-end framework for creating responsive webpages is called Bootstrap.
+A lightweight database for storing information about user interactions is called SQLite.
 
 ## Installation
 
 1. Clone the repository:
-`git clone https://github.com/mmabiaa/phishing-simulation-tool.git`
+`git clone 
 
 2. Create a virtual environment:
 python -m venv venv
@@ -27,13 +24,9 @@ python -m venv venv
 
 3. Activate the virtual environment:
 - On Windows:
-  ```
+ 
   venv\Scripts\activate
-  ```
-- On macOS/Linux:
-  ```
-  source venv/bin/activate
-  ```
+
 
 4. Install the required packages:
    pip install -r requirements.txt
@@ -45,20 +38,5 @@ python -m venv venv
 6. Open your browser and navigate to `http://127.0.0.1:5000`.
 
 ## Usage
-
-- Visit the home page to send phishing emails.
-- Click on the links in the emails to simulate user interaction.
-- View reports of user interactions in the report section.
-
-## Contributing
-
-We welcome contributions! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to contribute to this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Thanks to [Flask](https://flask.palletsprojects.com/) for providing a great framework.
-- Thanks to [Bootstrap](https://getbootstrap.com/) for their responsive design components.
+To send phishing emails, go to the main page.To mimic user activity, click on the links in the emails.
+Examine user interaction reports in the report area.

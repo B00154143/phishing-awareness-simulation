@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Security Dashboard</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(90deg, #507bee, #0ea5e9);
+            padding: 20px;
+            text-align: center;
+            font-size:40px;
+            font-weight: 700;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* STATS GRID */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .card h1 {
+            margin: 0;
+            font-size: 32px;
+            color: #38bdf8;
+        }
+
+        .card p {
+            margin: 5px 0 0;
+            color: #94a3b8;
+        }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            margin-top: 25px;
+            border-collapse: collapse;
+            background: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #0f172a;
+            text-align: left;
+            padding: 14px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #334155;
+        }
+
+        tr:hover {
+            background: #334155;
+        }
+
+        /* STATUS BADGES */
+        .clicked {
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .safe {
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 12px;
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <img src="{{ url_for('static', filename='fish.gif.gif') }}">
+    <span>Simulation Tool</span> 
+</div>
+
+<div class="container">
+
+    <!-- STATS -->
+    <div class="stats">
+
+        <div class="card">
+            <h1>{{ interactions|length }}</h1>
+            <p>Total Events</p>
+        </div>
+
+        <div class="card">
+            <h1>{{ interactions|selectattr("clicked_link")|list|length }}</h1>
+            <p>Clicks Detected</p>
+        </div>
+
+        <div class="card">
+            <h1>
+                {% if interactions|length > 0 %}
+                    {{ ((interactions|selectattr("clicked_link")|list|length / interactions|length) * 100) | round(1) }}
+                {% else %}
+                    0
+                {% endif %}%
+            </h1>
+            <p>Click Rate</p>
+        </div>
+
+    </div>
+
+    <!-- TABLE -->
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Time</th>
+        </tr>
+
+        {% for i in interactions %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.email }}</td>
+            <td>
+                {% if i.clicked_link %}
+                    <span class="clicked">CLICKED</span>
+                {% else %}
+                    <span class="safe">SAFE</span>
+                {% endif %}
+            </td>
+            <td>{{ i.timestamp }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <div class="footer">
+        Cybersecurity Awareness Simulation System • Flask Project • Educational Use Only
+    </div>
+
+</div>
+
+</body>
+</html>
